@@ -1,25 +1,51 @@
-import logo from './logo.svg';
+import { useEffect, useState } from "react";
 import './App.css';
 
 function App() {
-  return (
+    const [data, setData] = useState([]);
+  
+    const fetchData = () => {
+      fetch(`https://dummyjson.com/products`)
+        .then((response) => response.json())
+        .then((actualData) => {
+          console.log(actualData);
+          setData(actualData.products);
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    };
+  
+    useEffect(() => {
+      fetchData();
+    }, []);
+
+
+return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <tbody>
+        <tr>
+          <th>Product Name</th>
+          <th>price</th>
+          <th>discountPercentage</th>
+          <th>rating</th>
+          <th>stock</th>
+          <th>brand</th>
+          <th>category</th>
+        </tr>
+        {data.map((item, index) => (
+          <tr key={index}>
+            <td>{item.title}</td>
+            <td>{item.price}</td>
+            <td>{item.discountPercentage}</td>
+            <td>{item.rating}</td>
+            <td>{item.stock}</td>
+            <td>{item.category}</td>
+          </tr>
+        ))}
+      </tbody>
     </div>
   );
 }
-
 export default App;
