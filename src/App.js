@@ -23,7 +23,8 @@ function App() {
 
 
 return (
-    <div className="App">
+    <div className="container">
+    <table className="">
       <tbody>
         <tr>
           <th>Product Name</th>
@@ -34,9 +35,13 @@ return (
           <th>brand</th>
           <th>category</th>
         </tr>
-        {data.map((item, index) => (
-          <tr key={index}>
+        {data.map((item) => (
+          <tr key={ytem.id}>
             <td>{item.title}</td>
+            <td>{item.image}</td>
+             <br>
+                <button onClick={<img src={"https://i.dummyjson.com/data/products/"+item.images.jpg}/>}>OPEN IMAGE</button>
+            <br/>
             <td>{item.price}</td>
             <td>{item.discountPercentage}</td>
             <td>{item.rating}</td>
@@ -45,6 +50,7 @@ return (
           </tr>
         ))}
       </tbody>
+    </table>
     </div>
   );
 }
