@@ -36,7 +36,7 @@ return (
           <th>category</th>
         </tr>
         {data.map((item) => (
-          <tr key={ytem.id}>
+          <tr key={item.id}>
             <td>{item.title}</td>
             <td>{item.image}</td>
              <br>
